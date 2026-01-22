@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  fast-api:
+     image: rkxx/fastapi-prod:v1.0.0
+     build: .
+     container_name: fastapi-container
+     env_file:
+      - .env
+     environment:
+      - APP_ENV=${APP_ENV}
+      - APP_PORT=${PORT}
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+     ports:
+      - "${PORT}:${PORT}"
+     networks:
+      - fastapi-network
+     deploy:
+       resources:
+         limits:
+           cpus: '0.5'
+           memory: 256M
+     logging:
+       driver: "json-file"
+       options:
+         max-size: "5m"
+         max-file: "3"
+     volumes:
+       - app_logs:/app/logs
+
+networks:
+  fastapi-network:
+    driver: bridge
+
+volumes:
+  app_logs:
+
+
