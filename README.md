@@ -29,7 +29,6 @@ A production-grade microservice architecture showcasing the deployment of a Fast
 
 ## 📦 Project Structure
 
-```text
 ├── main.py              # FastAPI Application entry point
 ├── requirements.txt     # Python dependencies
 ├── Dockerfile           # Optimized Multi-stage Dockerfile
