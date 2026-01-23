@@ -28,7 +28,7 @@ A production-grade microservice architecture showcasing the deployment of a Fast
 ---
 
 ## 📦 Project Structure
-
+````text
 ├── main.py              # FastAPI Application entry point
 ├── requirements.txt     # Python dependencies
 ├── Dockerfile           # Optimized Multi-stage Dockerfile
@@ -36,6 +36,7 @@ A production-grade microservice architecture showcasing the deployment of a Fast
 ├── deployment.yml       # Kubernetes Deployment (3 Replicas + Probes)
 ├── service.yml          # Kubernetes Service (LoadBalancer)
 └── .env.example         # Environment variables template
+````
 
 ## 🚀 Installation & Setup
 
@@ -62,20 +63,20 @@ kubectl apply -f deployment.yml
 kubectl apply -f service.yml
 
 Accessing the Service: Since this is a bare-metal environment using K3s LoadBalancer, the service will be exposed on the node's IP address.
-
+`
     Check Service Status: kubectl get svc fastapi-service
-
+``
     URL: http://<YOUR-NODE-IP>:67
 
 🛡️ Security & Optimization Details
 
-    Base Image: Uses python:3.11-slim to minimize vulnerability footprint.
+  `  Base Image: Uses python:3.11-slim to minimize vulnerability footprint.
 
-    User Permissions: The Dockerfile creates a specific user (random_user) to avoid running the application as root.
+   ` User Permissions: The Dockerfile creates a specific user (random_user) to avoid running the application as root.
 
-    Resource Limits: Both Docker Compose and Kubernetes manifests define CPU and Memory limits (256MB RAM) to prevent resource exhaustion.
+   ` Resource Limits: Both Docker Compose and Kubernetes manifests define CPU and Memory limits (256MB RAM) to prevent resource exhaustion.
 
-    Probes:
+   ` Probes:
 
         Liveness Probe: Restarts the container if the application becomes unresponsive.
 
