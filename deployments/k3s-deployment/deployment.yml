@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-prod-deployment
+  labels:
+    app: fastapi-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fastapi-app
+  template:
+    metadata:
+      labels:
+        app: fastapi-app
+    spec:
+      containers:
+      - name: fastapi-container
+        image: rkxx/fastapi-prod:v1.0.0
+        ports:
+        - containerPort: 6767
+        env:
+        - name: APP_ENV
+          value: "production"
+        - name: APP_PORT
+          value: "6767"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 6767
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 6767
+          initialDelaySeconds: 5
+          periodSeconds: 10
