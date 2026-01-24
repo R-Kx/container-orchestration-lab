@@ -49,7 +49,9 @@ Clone the repository
 git clone git@github.com:R-Kx/container-orchestration-lab.git
 
 Start the services
+
 docker-compose up -d --build
+
 Access the API at: http://localhost:6767
 
 ---
@@ -59,10 +61,12 @@ Access the API at: http://localhost:6767
 Deploying to a bare-metal Kubernetes cluster:
 Bash
 
-Apply the Deployment manifest
+Apply the Deployment manifest:
+
 kubectl apply -f deployment.yml
 
-Apply the Service manifest
+Apply the Service manifest:
+
 kubectl apply -f service.yml
 
 ---
@@ -84,7 +88,7 @@ Since this is a bare-metal environment using K3s LoadBalancer, the service will 
 
     . Resource Limits: Both Docker Compose and Kubernetes manifests define CPU and Memory limits (256MB RAM) to prevent resource exhaustion.
 
-    # Probes:
+      Probes:
 
         Liveness Probe: Restarts the container if the application becomes unresponsive.
 
