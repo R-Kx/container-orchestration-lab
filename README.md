@@ -37,7 +37,7 @@ A production-grade microservice architecture showcasing the deployment of a Fast
 ├── deployment.yml       # Kubernetes Deployment (3 Replicas + Probes)
 ├── service.yml          # Kubernetes Service (LoadBalancer)
 └── .env.example         # Environment variables template
-
+```
 ---
 
 ## 🚀 Installation & Setup
@@ -65,6 +65,8 @@ kubectl apply -f deployment.yml
 Apply the Service manifest
 kubectl apply -f service.yml
 
+---
+
 ## Accessing the Service: 
 
 Since this is a bare-metal environment using K3s LoadBalancer, the service will be exposed on the node's IP address.
@@ -72,6 +74,7 @@ Since this is a bare-metal environment using K3s LoadBalancer, the service will 
     . Check Service Status: kubectl get svc fastapi-service
 
     . URL: http://<YOUR-NODE-IP>:67
+---
 
 ## 🛡️ Security & Optimization Details
 
@@ -86,6 +89,8 @@ Since this is a bare-metal environment using K3s LoadBalancer, the service will 
         Liveness Probe: Restarts the container if the application becomes unresponsive.
 
         Readiness Probe: Ensures traffic is only sent to the pod when it is fully ready to accept connections.
+
+---
 
 📝 Author
 
