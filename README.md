@@ -38,6 +38,8 @@ A production-grade microservice architecture showcasing the deployment of a Fast
 ├── service.yml          # Kubernetes Service (LoadBalancer)
 └── .env.example         # Environment variables template
 
+---
+
 ## 🚀 Installation & Setup
 
 ### 1. Local Development (Docker Compose)
