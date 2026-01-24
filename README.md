@@ -28,7 +28,8 @@ A production-grade microservice architecture showcasing the deployment of a Fast
 ---
 
 ## 📦 Project Structure
-````text
+
+```text
 ├── main.py              # FastAPI Application entry point
 ├── requirements.txt     # Python dependencies
 ├── Dockerfile           # Optimized Multi-stage Dockerfile
@@ -36,47 +37,49 @@ A production-grade microservice architecture showcasing the deployment of a Fast
 ├── deployment.yml       # Kubernetes Deployment (3 Replicas + Probes)
 ├── service.yml          # Kubernetes Service (LoadBalancer)
 └── .env.example         # Environment variables template
-````
 
 ## 🚀 Installation & Setup
 
 ### 1. Local Development (Docker Compose)
 To spin up the environment locally with resource limits and logging:
 
-# Clone the repository
+Clone the repository
 git clone git@github.com:R-Kx/container-orchestration-lab.git
 
-# Start the services
+Start the services
 docker-compose up -d --build
-
 Access the API at: http://localhost:6767
 
-2. Production Deployment (Kubernetes / K3s)
+---
+
+## 2. Production Deployment (Kubernetes / K3s)
 
 Deploying to a bare-metal Kubernetes cluster:
 Bash
 
-# Apply the Deployment manifest
+Apply the Deployment manifest
 kubectl apply -f deployment.yml
 
-# Apply the Service manifest
+Apply the Service manifest
 kubectl apply -f service.yml
 
-Accessing the Service: Since this is a bare-metal environment using K3s LoadBalancer, the service will be exposed on the node's IP address.
-`
-    Check Service Status: kubectl get svc fastapi-service
-``
-    URL: http://<YOUR-NODE-IP>:67
+## Accessing the Service: 
 
-🛡️ Security & Optimization Details
+Since this is a bare-metal environment using K3s LoadBalancer, the service will be exposed on the node's IP address.
 
-  `  Base Image: Uses python:3.11-slim to minimize vulnerability footprint.
+    . Check Service Status: kubectl get svc fastapi-service
 
-   ` User Permissions: The Dockerfile creates a specific user (random_user) to avoid running the application as root.
+    . URL: http://<YOUR-NODE-IP>:67
 
-   ` Resource Limits: Both Docker Compose and Kubernetes manifests define CPU and Memory limits (256MB RAM) to prevent resource exhaustion.
+## 🛡️ Security & Optimization Details
 
-   ` Probes:
+    . Base Image: Uses python:3.11-slim to minimize vulnerability footprint.
+
+    . User Permissions: The Dockerfile creates a specific user (random_user) to avoid running the application as root.
+
+    . Resource Limits: Both Docker Compose and Kubernetes manifests define CPU and Memory limits (256MB RAM) to prevent resource exhaustion.
+
+    # Probes:
 
         Liveness Probe: Restarts the container if the application becomes unresponsive.
 
