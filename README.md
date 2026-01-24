@@ -42,13 +42,13 @@ A production-grade microservice architecture showcasing the deployment of a Fast
 
 ## 🚀 Installation & Setup
 
-### 1. Local Development (Docker Compose)
+## 1. Local Development (Docker Compose)
 To spin up the environment locally with resource limits and logging:
 
 Clone the repository
 git clone git@github.com:R-Kx/container-orchestration-lab.git
 
-Start the services
+# Start the services
 
 docker-compose up -d --build
 
@@ -59,13 +59,13 @@ Access the API at: http://localhost:6767
 ## 2. Production Deployment (Kubernetes / K3s)
 
 Deploying to a bare-metal Kubernetes cluster:
-Bash
 
-Apply the Deployment manifest:
+
+# Apply the Deployment manifest:
 
 kubectl apply -f deployment.yml
 
-Apply the Service manifest:
+# Apply the Service manifest:
 
 kubectl apply -f service.yml
 
